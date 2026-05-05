@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-breadboard-half",
+      "id": "bb1",
+      "top": 44.1,
+      "left": -303.9,
+      "rotate": 90,
+      "attrs": {}
+    },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 27.9, "left": -90.66, "attrs": {} },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": -152.1, "left": -301.7, "attrs": {} },
+    { "type": "board-bmp180", "id": "bmp1", "top": 331.84, "left": -345.34, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 13.55,
+      "left": -172.8,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 90.35,
+      "left": -182.4,
+      "attrs": { "value": "2000" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "bmp1:GND", "bb1:bn.25", "black", [ "h0" ] ],
+    [ "bmp1:3.3V", "bb1:bp.25", "green", [ "h0" ] ],
+    [ "bb1:6t.e", "bb1:bp.5", "green", [ "h0" ] ],
+    [ "bb1:bn.15", "bb1:19t.e", "green", [ "v11.2", "h106.9" ] ],
+    [ "esp:12", "bb1:18t.a", "", [ "$bb" ] ],
+    [ "esp:13", "bb1:20t.a", "", [ "$bb" ] ],
+    [ "esp:14", "bb1:17t.a", "", [ "$bb" ] ],
+    [ "esp:25", "bb1:14t.a", "", [ "$bb" ] ],
+    [ "esp:26", "bb1:15t.a", "", [ "$bb" ] ],
+    [ "esp:27", "bb1:16t.a", "", [ "$bb" ] ],
+    [ "esp:32", "bb1:12t.a", "", [ "$bb" ] ],
+    [ "esp:33", "bb1:13t.a", "", [ "$bb" ] ],
+    [ "esp:34", "bb1:10t.a", "", [ "$bb" ] ],
+    [ "esp:35", "bb1:11t.a", "", [ "$bb" ] ],
+    [ "esp:3V3", "bb1:6t.a", "", [ "$bb" ] ],
+    [ "esp:EN", "bb1:7t.a", "", [ "$bb" ] ],
+    [ "esp:VP", "bb1:8t.a", "", [ "$bb" ] ],
+    [ "esp:VN", "bb1:9t.a", "", [ "$bb" ] ],
+    [ "esp:GND.1", "bb1:19t.a", "", [ "$bb" ] ],
+    [ "esp:D2", "bb1:21t.a", "", [ "$bb" ] ],
+    [ "esp:D3", "bb1:22t.a", "", [ "$bb" ] ],
+    [ "esp:CMD", "bb1:23t.a", "", [ "$bb" ] ],
+    [ "esp:5V", "bb1:24t.a", "", [ "$bb" ] ],
+    [ "ultrasonic1:GND", "bb1:bn.1", "black", [ "v76.8", "h-30" ] ],
+    [ "bmp1:SCL", "bb1:14t.d", "green", [ "h0" ] ],
+    [ "bmp1:SDA", "bb1:15t.c", "green", [ "h0" ] ],
+    [ "ultrasonic1:VCC", "bb1:24t.e", "red", [ "v0" ] ],
+    [ "bb1:2t.c", "bb1:10t.c", "green", [ "h0" ] ],
+    [ "bb1:2b.i", "ultrasonic1:ECHO", "green", [ "h0" ] ],
+    [ "r1:1", "bb1:2b.h", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:2t.d", "", [ "$bb" ] ],
+    [ "bb1:10b.j", "bb1:bn.8", "green", [ "h0" ] ],
+    [ "r2:1", "bb1:10b.i", "", [ "$bb" ] ],
+    [ "r2:2", "bb1:10t.e", "", [ "$bb" ] ],
+    [ "bb1:11t.e", "ultrasonic1:TRIG", "green", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
