@@ -102,8 +102,10 @@ void loop()
   digitalWrite(TRIG_PIN, HIGH);
   delayMicroseconds(10);
   digitalWrite(TRIG_PIN, LOW);
-
+  
   long duration = pulseIn(ECHO_PIN, HIGH);
+  float speedOfSound = 331.3 + (0.606 * temp);
+  float distanceCm   = (duration / 2.0) * (speedOfSound / 10000.0);
 
   float speedOfSound = 331.3 + (0.606 * temp);
   float distanceCm = (duration / 2.0) * (speedOfSound / 10000.0);
