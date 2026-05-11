@@ -12,7 +12,13 @@
       "attrs": {}
     },
     { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 27.9, "left": -90.66, "attrs": {} },
-    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": -152.1, "left": -301.7, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -152.1,
+      "left": -301.7,
+      "attrs": { "distance": "226" }
+    },
     { "type": "board-bmp180", "id": "bmp1", "top": 331.84, "left": -345.34, "attrs": {} },
     {
       "type": "wokwi-resistor",
@@ -24,9 +30,24 @@
     {
       "type": "wokwi-resistor",
       "id": "r2",
-      "top": 90.35,
-      "left": -182.4,
+      "top": 32.75,
+      "left": -172.8,
       "attrs": { "value": "2000" }
+    },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic2", "top": 49.5, "left": -551.3, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 253.55,
+      "left": -172.8,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r4",
+      "top": 272.75,
+      "left": -172.8,
+      "attrs": { "value": "1000" }
     }
   ],
   "connections": [
@@ -36,6 +57,17 @@
     [ "bmp1:3.3V", "bb1:bp.25", "green", [ "h0" ] ],
     [ "bb1:6t.e", "bb1:bp.5", "green", [ "h0" ] ],
     [ "bb1:bn.15", "bb1:19t.e", "green", [ "v11.2", "h106.9" ] ],
+    [ "bmp1:SCL", "bb1:14t.d", "green", [ "h0" ] ],
+    [ "bmp1:SDA", "bb1:15t.c", "green", [ "h0" ] ],
+    [ "bb1:2b.i", "ultrasonic1:ECHO", "green", [ "h0" ] ],
+    [ "esp:18", "bb1:2t.a", "green", [ "h9.1", "v-114.3" ] ],
+    [ "bb1:2t.c", "bb1:4t.c", "green", [ "h0" ] ],
+    [ "bb1:4b.j", "bb1:bn.3", "green", [ "h0" ] ],
+    [ "esp:5", "bb1:1b.g", "green", [ "h18.7", "v-133.5" ] ],
+    [ "ultrasonic1:TRIG", "bb1:1b.i", "green", [ "v0" ] ],
+    [ "ultrasonic1:GND", "bb1:bn.2", "black", [ "v0" ] ],
+    [ "r2:1", "bb1:4b.h", "", [ "$bb" ] ],
+    [ "r2:2", "bb1:4t.d", "", [ "$bb" ] ],
     [ "esp:12", "bb1:18t.a", "", [ "$bb" ] ],
     [ "esp:13", "bb1:20t.a", "", [ "$bb" ] ],
     [ "esp:14", "bb1:17t.a", "", [ "$bb" ] ],
@@ -55,18 +87,22 @@
     [ "esp:D3", "bb1:22t.a", "", [ "$bb" ] ],
     [ "esp:CMD", "bb1:23t.a", "", [ "$bb" ] ],
     [ "esp:5V", "bb1:24t.a", "", [ "$bb" ] ],
-    [ "ultrasonic1:GND", "bb1:bn.1", "black", [ "v76.8", "h-30" ] ],
-    [ "bmp1:SCL", "bb1:14t.d", "green", [ "h0" ] ],
-    [ "bmp1:SDA", "bb1:15t.c", "green", [ "h0" ] ],
-    [ "ultrasonic1:VCC", "bb1:24t.e", "red", [ "v0" ] ],
-    [ "bb1:2t.c", "bb1:10t.c", "green", [ "h0" ] ],
-    [ "bb1:2b.i", "ultrasonic1:ECHO", "green", [ "h0" ] ],
+    [ "ultrasonic1:VCC", "bb1:24b.j", "red", [ "v0" ] ],
+    [ "bb1:24b.f", "bb1:24t.e", "green", [ "h0" ] ],
+    [ "ultrasonic2:VCC", "bb1:24b.i", "red", [ "v96", "h297.6" ] ],
+    [ "esp:19", "bb1:26b.h", "green", [ "h28.3", "v125.7" ] ],
+    [ "bb1:26b.j", "ultrasonic2:TRIG", "green", [ "h-278.4" ] ],
+    [ "ultrasonic2:ECHO", "bb1:27b.j", "green", [ "v115.2", "h8.8" ] ],
     [ "r1:1", "bb1:2b.h", "", [ "$bb" ] ],
     [ "r1:2", "bb1:2t.d", "", [ "$bb" ] ],
-    [ "bb1:10b.j", "bb1:bn.8", "green", [ "h0" ] ],
-    [ "r2:1", "bb1:10b.i", "", [ "$bb" ] ],
-    [ "r2:2", "bb1:10t.e", "", [ "$bb" ] ],
-    [ "bb1:11t.e", "ultrasonic1:TRIG", "green", [ "h0" ] ]
+    [ "r3:1", "bb1:27b.h", "", [ "$bb" ] ],
+    [ "r3:2", "bb1:27t.d", "", [ "$bb" ] ],
+    [ "r4:1", "bb1:29b.h", "", [ "$bb" ] ],
+    [ "r4:2", "bb1:29t.d", "", [ "$bb" ] ],
+    [ "bb1:bn.24", "bb1:29b.i", "green", [ "h0" ] ],
+    [ "bb1:29t.b", "bb1:27t.b", "green", [ "h0" ] ],
+    [ "ultrasonic2:GND", "bb1:bn.20", "black", [ "v0" ] ],
+    [ "bb1:27t.a", "esp:21", "green", [ "h134.4", "v-153.6" ] ]
   ],
   "dependencies": {}
 }
