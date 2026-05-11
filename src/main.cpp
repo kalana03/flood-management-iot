@@ -12,7 +12,7 @@ const char* MQTT_BROKER = "broker.hivemq.com";
 
 const int   MQTT_PORT  = 1883;
 const char* MQTT_TOPIC = "flood/a1/sensor01";
-const char* DEVICE_ID  = "NODE_01";
+const char* DEVICE_ID  = "MR-KND-001";
 
 /* --- PIN CONFIGURATION --- */
 const int SDA_PIN  = 26;
